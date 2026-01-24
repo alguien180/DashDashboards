@@ -2,11 +2,14 @@ import dash
 import pandas as pd
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
+from pathlib import Path
 
 app = Dash(__name__)
 
 # import and cleand data (importing csv into pandas)
-df = pd.read_csv("intro_bees.csv")
+BASE_DIR=Path(__file__).resolve().parent
+csv_path = BASE_DIR.parent / "intro_bees.csv"
+df = pd.read_csv(csv_path)
 
 df = df.groupby(['State','ANSI','Affected by', 'Year', 'state_code'])[['Pct of Colonies Impacted']].mean()
 df.reset_index(inplace=True)
