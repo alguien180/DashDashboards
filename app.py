@@ -1,12 +1,62 @@
+# ------------------------------------------------------------
+# WASM-only lines (keep commented for local / Render execution)
+# ------------------------------------------------------------
+
+
 #import micropip
 #await micropip.install('dash-mantine-components')
 #await micropip.install('dash-iconify')
 from dash import Dash, html, dcc
 import dash_mantine_components as dmc
 
-
+# ------------------------------------------------------------
+# Create Dash app and expose Flask server for deployment
+# ------------------------------------------------------------
 app = Dash(__name__)
 server = app.server
+
+# ------------------------------------------------------------
+# First Project Card
+# Put an image in: assets/project-001.png
+# (If you don't have it yet, remove the CardSection block)
+# ------------------------------------------------------------
+
+project_card_001 = dmc.Card(
+    children=[
+        # Image at top (local asset). Put an image in: assets/project-001.png
+        dmc.CardSection(
+            dmc.Image(
+                src="/assets/project-001.png",
+                alt="Project 001",
+            )
+        ),
+
+        # Title + icon row (icon shown, not clickable)
+        dmc.Group(
+            [
+                dmc.Text("Project 001", fw=600, size="lg"),
+                dmc.ThemeIcon(
+                    dmc.Text("•", size="xl"),
+                    variant="light",
+                ),
+            ],
+            justify="space-between",
+            mt="md",
+            mb="xs",
+        ),
+
+        # Short description
+        dmc.Text(
+            "Step 4: First project card added.",
+            size="sm",
+            c="dimmed",
+        ),
+    ],
+    withBorder=True,
+    shadow="sm",
+    radius="md",
+    style={"width": 350},
+)
 
 projects_tab=dmc.Container(
     [
