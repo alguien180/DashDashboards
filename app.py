@@ -62,6 +62,15 @@ projects_tab=dmc.Container(
     [
         dmc.Title("Dashboard Hub",order=1),
         dmc.Text("Step 3: Tabs are working.", c= "dimmed"),
+        dmc.SimpleGrid(
+            cols=3,
+            spacing="lg",
+            
+
+            children=[
+                project_card_001,
+            ]
+        )
     ],
     size="md",
     pt=30,
